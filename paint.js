@@ -73,6 +73,10 @@ function canvasApp(){
 	  theCanvas.addEventListener('mousedown', mouse_pressed_down, false);
 	  theCanvas.addEventListener('mousemove', mouse_moved, false);
 	  theCanvas.addEventListener('mouseup', mouse_released, false);
+	  theCanvas.addEventListener('touchdown', mouse_pressed_down, false);
+   	  theCanvas.addEventListener('touchmove', mouse_moved, false);
+	  theCanvas.addEventListener('touchup', mouse_released, false);
+
     }
 
     function mouse_pressed_down(ev) {
