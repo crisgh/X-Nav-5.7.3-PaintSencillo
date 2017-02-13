@@ -1,7 +1,7 @@
 /* Asociamos función canvasApp a carga de página */
-window.addEventListener('load', canvasApp, false);	
+window.addEventListener('load', canvasApp, false);
 
-function canvasApp(){  
+function canvasApp(){
     /* Inicializamos el canvas */
 	var theCanvas = document.getElementById('canvas');
 	var context = theCanvas.getContext('2d');
@@ -27,6 +27,32 @@ function canvasApp(){
 	  var color_id = color_button_selected.getAttribute('id');
 	  colorChosen.innerHTML = color_id;
     }
+
+
+		/* Inicializamos el valor del color */
+		var weigthChosen = document.getElementById("weigth_chosen");
+
+		/* Tomamos los botones de colores por su id */
+		var weigth5 = document.getElementById("5");
+		var weigth7 = document.getElementById("7");
+		var weigth9 = document.getElementById("9");
+		var weigth11 = document.getElementById("11");
+		var weigth13 = document.getElementById("13");
+		/* Asociamos función colorPressed a pulsación de botón */
+		weigth5.addEventListener('click', weigthPressed, false);
+		weigth7.addEventListener('click', weigthPressed, false);
+		weigth9.addEventListener('click', weigthPressed, false);
+		weigth11.addEventListener('click', weigthPressed, false);
+		weigth13.addEventListener('click', weigthPressed, false);
+
+		function weigthPressed(eweigth) {
+		var weigth_button_selected = eweigth.target;
+		var weigth_id = weigth_button_selected.getAttribute("id");
+		weigthChosen.innerHTML = weigth_id;
+		}
+
+
+
 
     /* Botón de reseteo */
 	var resetButton = document.getElementById("reset_image");
@@ -59,14 +85,14 @@ function canvasApp(){
     }
 
     function mouse_moved(ev) {
-	  var x, y;	
+	  var x, y;
 	  // Get the mouse position in the canvas
-	  x = ev.pageX;
-	  y = ev.pageY;
+	  x = ev.offsetX;
+	  y = ev.offsetY;
 
 	  if (begin_drawing) {
 	    context.beginPath();
-	    context.arc(x, y, 7, (Math.PI/180)*0, (Math.PI/180)*360, false);
+	    context.arc(x, y, weigthChosen.innerHTML, (Math.PI/180)*0, (Math.PI/180)*360, false);
 	    context.fill();
         context.closePath();
 	  }
